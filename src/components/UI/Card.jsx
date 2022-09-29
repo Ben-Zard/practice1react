@@ -2,14 +2,15 @@ import React from 'react'
 import styled from 'styled-components';
 
 const Cards = styled.div`
-  display: flex;
   background-color: #fff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0,0.26);
+  border-radius: 10px;
   `
 
-const Card = () => {
+const Card = (props) => {
   return (
-    <Cards>
-
+    <Cards className={`${props.className}`}>
+{props.children}
     </Cards>
   )
 }

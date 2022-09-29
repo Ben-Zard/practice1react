@@ -1,44 +1,43 @@
 import {useState} from "react";
 import styled from "styled-components";
+import Card from "./UI/Card"
 const Form = styled.form`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    text-align: left;
-    /* .input {
-  margin: 2rem auto;
+
+ margin: 2rem auto;
   padding: 1rem;
   width: 90%;
   max-width: 40rem;
-}
 
-.input label {
+
+& label {
   display: block;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
-
-.input input {
+& input {
   font: inherit;
   display: block;
   width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid #830000;
   padding: 0.15rem;
   margin-bottom: 0.5rem;
 }
 
-.input input:focus {
+& input:focus {
   outline: none;
+  background-color: #e7e7e78f;
   border-color: #4f005f;
-} */
+}
 `;
 
 const Innerform = styled.div`
-  display:flex; 
-  width: 100%;`
+display: flex;
+  margin: 1rem auto;
+  padding: .1rem;
+  width: 80%;
+  max-width: 5rem;`
 
-const User = ({onSaveData}) => {
+const User = ({onSaveData,onerror}) => {
  const [name,setName] = useState('');
  const [age,setAge] = useState('');
   
@@ -53,6 +52,10 @@ const User = ({onSaveData}) => {
 
   const  handleSubmit = (e) => {
     e.preventDefault(); //stops from reloading page
+    if (name.trim() === '' ||age.trim() === 0 ){
+      onerror(true);
+      return;
+    }else{
     const UserList = {
       id: Math.round(Math.random() * 100),
       name: name,
@@ -61,26 +64,19 @@ const User = ({onSaveData}) => {
     onSaveData( UserList);
     setName("");
     setAge("");
-   }
+  }
+  }
 
   return (
-    <div>
+    <Card className="input">
       <Form onSubmit = {handleSubmit}>
-        <Innerform >
           <label>Username</label>
-        </Innerform>
-        <Innerform >
           <input type="text" value={name} onChange = {nameHandler}/>
-        </Innerform>
-        <Innerform >
           <label>Age</label>
-        </Innerform>
-        <Innerform >
           <input type="number" value={age} onChange = {ageHandler} />
-        </Innerform>
         <input type="submit" value="Add User " />
       </Form>
-    </div>
+    </Card>
   );
 };
 
