@@ -55,6 +55,10 @@ const Container = styled.div`
   }
 }
 `;
+
+const Modal =props => {
+    
+}
 const ErrorModal = ({onerror}) => {
   return (
     <div  >
