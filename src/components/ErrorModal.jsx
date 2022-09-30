@@ -39,6 +39,15 @@ const Container = styled.div`
   justify-content: flex-end;
 }
 
+& button {
+    background: #494949;
+    border-radius: 5px;
+    color: white;
+    width: 20%;
+    height: 10%;
+
+}
+
 @media (min-width: 768px) {
   .modal {
     left: calc(50% - 20rem);
@@ -46,19 +55,19 @@ const Container = styled.div`
   }
 }
 `;
-const ErrorModal = ({ onerror }) => {
+const ErrorModal = ({onerror}) => {
   return (
-    <div >
-    <Container>
+    <div  >
+    <Container onClick={() => onerror(false)}>
     <Card className = "modal">
       <div className="header">
-        <h2>h</h2>
+        <h2>Wrong input</h2>
       </div>
       <div className = "content">
-        <p>h</p>
+        <p>enter a valid name and age </p>
       </div>
       <div className = "actions">
-      <button onClick={() => onerror(false)}>wrong</button>
+      <button onClick={() => onerror(false)}>Close</button>
       </div>
     </Card>
     </Container>

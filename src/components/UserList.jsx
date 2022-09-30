@@ -3,7 +3,7 @@ import Usersbase from "./Usersbase"
 import User from './User'
 import UserAdd from './UserAdd'
 import ErrorModal from './ErrorModal'
-const UserList = () => {
+const UserList = ({}) => {
 const [UserAddlist,setUserlist] = useState(Usersbase); 
 const [error,seterror] = useState(false);
 
@@ -14,11 +14,11 @@ const handleNewUser = (UserList) =>{
     });
   }
   const handleError = (set) =>{
-    seterror(set);
+    seterror(set)
   }
   return (
     <>
-     {error ?(<><ErrorModal onerror={handleError}/>  <UserAdd onerror={handleError} onSaveData = {handleNewUser}/></>) :( <>
+     {error ?(<><ErrorModal errors= {error} onerror={handleError}/>  <UserAdd onerror={handleError} onSaveData = {handleNewUser}/></>) :( <>
       <UserAdd onerror={handleError} onSaveData = {handleNewUser}/>
     <User  key = {UserAddlist.id}Users = {UserAddlist}/>
     </>)}

@@ -30,12 +30,6 @@ const Form = styled.form`
 }
 `;
 
-const Innerform = styled.div`
-display: flex;
-  margin: 1rem auto;
-  padding: .1rem;
-  width: 80%;
-  max-width: 5rem;`
 
 const User = ({onSaveData,onerror}) => {
  const [name,setName] = useState('');
